@@ -5,20 +5,20 @@
 
 ##Post install tools
 
-##funzioni
+##funxtions
 
 function buntu { 
   release = $(lsb_release -sc)
 	sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $release main universe restricted multiverse"
   sudo add-apt-repository "deb http://archive.canonical.com/ubuntu $release partner"
-  echo 'Abilitati server Universe e partners, per più software!'
+  echo 'Enabled server Universe and partners, much more software!'
 	clear
 	while true;
 	do
-    		echo 'Aspetti, questa è una Ubuntu (u)fficiale o (d)erivata?'
+    		echo 'Wait, is this an Ubuntu (o)fficial or (d)erivate?'
     		read ris
-    		##controlli annidati per immettere dati corretti qui tra d o u && x l k
-    		if [[ $ris = "u" || $ris = "d" ]]; then
+			##nested controls to insert correct datab between d or o && x l k
+    		if [[ $ris = "o" || $ris = "d" ]]; then
       			while true; 
 				do
         				case $ris in
@@ -27,7 +27,7 @@ function buntu {
                 					break
 							;;
             					d)
-							echo 'quale di queste?'
+							echo 'which of these?'
                 					echo '(x)ubuntu'
                 					echo '(l)ubuntu'
                 					echo '(k)ubuntu'
@@ -43,7 +43,7 @@ function buntu {
 									suffix='kubuntu'
 									;;
                     						*)	
-									echo 'opzione non valida, signore'
+									echo 'bad answear'
                     							clear
 									;;
                 					esac
@@ -56,7 +56,7 @@ function buntu {
       			break
     		fi
   	done
-	## aggiornamento
+	## simple update check
 	sudo apt update
 	sudo apt dist-upgrade -y
 	clear
@@ -70,12 +70,12 @@ function buntu {
 		sudo apt install unity-tweak-tool unity-tweak -y
 		clear
 	fi
-	echo 'Soppressione di errori sys casuali'
+	echo 'Casual crash error suppression'
 	sleep 0.8
 	sudo sed -i "s/enabled=1/enabled=0" /etc/default/apport
-	echo 'necessita di programmi P2P (torrent, eMule)? [y/N]'
+	echo 'P2P software needed (torrent, eMule)? [y/N]'
   if [ $risp = 'y']; then
-		echo 'ha fastweb a casa? [y/N]'
+		echo 'ha fastweb a casa? [y/N] (for italians users)'
 		read ris
 		if [$ris = 'y']; then
 			sudo apt install amule-adunanza -y
@@ -84,22 +84,22 @@ function buntu {
 		fi
 	fi
 	clear
-	echo 'necessita di LibreOffice completo? [y/N]'
+	echo 'Complete LibreOffice needed? [y/N]'
 	read risp
 	if [ $risp = 'y' ]; then
 		sudo apt install libreoffice-base -y
 	fi
 	clear
-	echo 'necessita pacchetti di grafica/editing video/audio? [y/N]'
+	echo 'Graphic/editing video/audio packages needed? [y/N]'
 	read risp
 	if [ $risp = 'y' ];then
 		clear
-		echo 'molto bene, indichi cosa intende installare|'
-		echo '1) Pacchetti audio			 |'
-		echo '2) Pacchetti grafica/publishing		 |'
-		echo '3) Pacchetti video			 |'
-		echo '4) tutti					 |'
-		echo 'possibilità di scelte multiple (es.23 o 12)|'
+		echo 'All right, choose what you need|'
+		echo '1) Audio pkgs			 |'
+		echo '2) Graphics/publishing pkgs		 |'
+		echo '3) Video pkgs			 |'
+		echo '4) All toghether					 |'
+		echo 'multiple choices allowed (ex.23 or 12)|'
 		audio=' ubuntustudio-audio ubuntustudio-audio-plugins'
 		graph=' ubuntustudio-fonts ubuntustudio-graphics ubuntustudio-photography ubuntustudio-publishing gimp-plugin-registry krita'
 		video=' ubuntustudio-video'
@@ -130,13 +130,13 @@ function buntu {
 		clear
 	fi
 	clear
-	echo 'Lavoro completato!'
+	echo 'Job completed!'
 	sleep 1
 	echo '<<--'
 	sleep 1.5 
 }
 
-##programma principale
+##main menu
 while true;
 do
 	clear
@@ -148,7 +148,7 @@ do
 	echo '4) - OpenSuSE essentials'
 	echo '5) - Arch install guide'
 	echo '6) - Alpine Linux setup'
-	echo '7) - Chiudere'
+	echo '7) - Exit'
 	echo -ne '-->'	
 
 	read IT
@@ -156,7 +156,7 @@ do
 	case $IT in
 		1)
 			clear
-			echo 'in costruzione'
+			echo 'building'
 			sleep 1
 			clear
 			;;
@@ -164,42 +164,42 @@ do
 			clear
 			echo '*buntu essentials'
 			sleep 0.5
-			echo 'avvio post installazione'
+			echo 'start post installation'
 			sleep 1
 			clear
 			echo -ne '-->>'
 			buntu
 			;;
 		3)clear
-			echo 'in costruzione'
+			echo 'building'
 			sleep 1
 			clear
 			;;
 		4)clear
-			echo 'in costruzione'
+			echo 'building'
 			sleep 1
 			clear
 			;;
 		5)clear
-			echo 'in costruzione'
+			echo 'building'
 			sleep 1
 			clear
 			;;
 		6)clear
-			echo 'in costruzione'
+			echo 'building'
 			sleep 1
 			clear
 			;;
 		7)
 			clear
-			echo -ne 'Uscita'
+			echo -ne 'Exiting'
 			sleep 2
 			clear
       exit
 			;;
 		*)
 			clear
-			echo -ne 'comando non valido'
+			echo -ne 'bad command!'
 			sleep 0.5
 			;;
 	esac
