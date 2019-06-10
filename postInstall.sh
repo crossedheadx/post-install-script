@@ -163,6 +163,17 @@ function buntu {
 	sleep 1.5 
 }
 
+function aliases {
+  echo "alias ll='ls -l'" >> $HOME/.bashrc
+  echo "alias la='ls -A'" >> $HOME/.bashrc
+  echo "alias l='ls -CF'" >> $HOME/.bashrc
+  echo "alias rm='rm -i'" >> $HOME/.bashrc
+  echo "alias cp='cp -i'" >> $HOME/.bashrc
+  echo "alias mv='mv -i'" >> $HOME/.bashrc
+  sleep 0.5
+  echo "Now your shell is more cool!"
+}
+
 ##main menu
 while true;
 do
@@ -175,7 +186,8 @@ do
 	echo '4) - OpenSuSE essentials'
 	echo '5) - Arch install guide'
 	echo '6) - Alpine Linux setup'
-	echo '7) - Exit'
+	echo '7) - Cool aliases for your shell!'
+  echo '8) - Exit'
 	echo -ne '-->'	
 
 	read IT
@@ -217,7 +229,15 @@ do
 			sleep 1
 			clear
 			;;
-		7)
+    7)
+      echo 'Cool aliases! Yea!'
+      sleep 1 
+      echo 'begin'
+      clear 
+      echo -ne '-->>'
+      aliases
+      ;;
+		8)
 			clear
 			echo -ne 'Exiting'
 			sleep 2
