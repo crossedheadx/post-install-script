@@ -1,11 +1,33 @@
 #!/bin/bash
-## HAL9000 v0.003 install tools
+## HAL9000 v0.004 install tools
 ## auth: Cesare Vigliani aka crossedhead aka crossedheadx
 ## github https://github.com/crossedheadx
 
 ##Post install tools
 
-##funxtions
+##functions
+
+function debian {
+
+  echo 'Password'
+  user = $USER 
+  release = $(lsb_release)
+  su -c 'apt-get install sudo && usermod -aG sudo $user && visudo' #TODO: automate better this part
+  echo 'Password, again'
+  ## add repos 
+
+  sudo apt-get update 
+  sudo apt-get upgrade -y 
+  clear
+  
+  # install some stuff
+  sudo apt-get install -y git curl vlc firmware-realtek firmware-iwlwifi firmware-linux-non-free fslint rsnapshot mc xsane $release-backports libreoffice htop nmap gdebi 
+
+  echo "Job Completed!"
+  sleep 1
+  clear 
+
+}
 
 function buntu { 
   release = $(lsb_release -sc)
@@ -17,7 +39,7 @@ function buntu {
 	do
     		echo 'Wait, is this an Ubuntu (o)fficial or (d)erivate?'
     		read ris
-			##nested controls to insert correct datab between d or o && x l k
+			##nested controls to insert correct data between d or o && x l k
     		if [[ $ris = "o" || $ris = "d" ]]; then
       			while true; 
 				do
@@ -43,13 +65,13 @@ function buntu {
 									suffix='kubuntu'
 									;;
                     						*)	
-									echo 'bad answear'
+									echo 'bad answer'
                     							clear
 									;;
                 					esac
                 					if [[ $ri = "x" || $ri = "l" || $ri = "k" ]]; then
                   						break
-							fi
+                            fi
 							;;
         				esac
       				done
@@ -72,10 +94,10 @@ function buntu {
 	fi
 	echo 'Casual crash error suppression'
 	sleep 0.8
-	sudo sed -i "s/enabled=1/enabled=0" /etc/default/apport
+	sudo sed -i "s/enabled=1/enabled=0/" /etc/default/apport
 	echo 'P2P software needed (torrent, eMule)? [y/N]'
   if [ $risp = 'y']; then
-		echo 'ha fastweb a casa? [y/N] (for italians users)'
+		echo 'hai fastweb a casa? [y/N] (for italians users)'
 		read ris
 		if [$ris = 'y']; then
 			sudo apt install amule-adunanza -y
@@ -126,6 +148,11 @@ function buntu {
 			4)	
 				sudo apt install $audio $graph $video -y
 				;;
+      *)
+        echo 'Combination not allowed'
+        sleep 1 
+        clear
+        ;;
 		esac
 		clear
 	fi
@@ -141,7 +168,7 @@ while true;
 do
 	clear
 	echo '### --- Install Tool v3 --- ###'
-	echo ' # set comandi post install  #'
+	echo ' # post install commands set #'
 	echo '1) - Debian essentials'
 	echo '2) - *buntu essentials'
 	echo '3) - Fedora/CentOS/RHEL essentials'
